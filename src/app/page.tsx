@@ -6,6 +6,11 @@ import HUD from "@/components/ui/HUD";
 import Terminal from "@/components/ui/Terminal";
 import AIChat from "@/components/ui/AIChat";
 import Section from "@/components/ui/Section";
+import CommandPalette from "@/components/ui/CommandPalette";
+import FloatingNav from "@/components/ui/FloatingNav";
+import ParticleCursor from "@/components/ui/ParticleCursor";
+import ScrollProgressRing from "@/components/ui/ScrollProgressRing";
+import ThemeCustomizer from "@/components/ui/ThemeCustomizer";
 import { portfolioData } from "@/data/data";
 import Lenis from "lenis";
 import { useAppStore } from "@/store/useAppStore";
@@ -132,10 +137,15 @@ export default function Home() {
   return (
     <main className={`relative bg-space-black min-h-[1600vh] transition-all duration-1000 ${wormholeActive ? 'hue-rotate-[180deg] scale-110 blur-sm' : ''}`}>
       {!fastMode && <UniverseCanvas />}
+      <ParticleCursor />
+      <ScrollProgressRing />
+      <CommandPalette />
+      <FloatingNav />
+      <ThemeCustomizer />
       <HUD />
       <Terminal />
       <AIChat />
-      
+
       {/* 2D Content Layer */}
       <div className="relative z-10 flex flex-col gap-[100vh] pb-[50vh]">
         
