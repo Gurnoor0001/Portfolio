@@ -41,14 +41,14 @@ GitHub: ${portfolioData.personal.links.github}
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();
-    
+
     // 1. IF API KEY EXISTS: USE REAL GEMINI AI
     if (genAI) {
-      const model = genAI.getGenerativeModel({ 
+      const model = genAI.getGenerativeModel({
         model: "gemini-3.5-flash",
         systemInstruction: systemPrompt
       });
-      
+
       const result = await model.generateContent(message);
       const reply = result.response.text();
       return NextResponse.json({ reply });
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 
     if (query.includes("skill") || query.includes("tech") || query.includes("language")) {
       reply = `Gurnoor is skilled in multiple areas:\n\n- Languages: ${portfolioData.skills.languages.join(", ")}\n- AI/ML: ${portfolioData.skills.ai_ml.join(", ")}\n- Frameworks: ${portfolioData.skills.frameworks.join(", ")}\n\nHe is particularly strong in Python, PyTorch, and Computer Vision.`;
-    } 
+    }
     else if (query.includes("project") || query.includes("work") || query.includes("built")) {
       reply = `Gurnoor has built several impressive AI systems. His top projects are:\n\n1. **PrismaForge**: A Neural Style Transfer Engine built with PyTorch and VGG19.\n2. **LookHere**: An AI-Powered Smart Attendance System using multimodal biometrics (face & voice recognition).\n\nYou can ask for more details about a specific project!`;
     }
